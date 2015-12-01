@@ -1,1 +1,21 @@
 include mixins
+.page-wrapper
+  .header
+    .title Timeline 2.0
+    .current--date 
+      span
+    .country-nav
+      .country--all
+        .badge ALL
+      .country--gb
+        .badge GB
+      .country--ger
+        .badge GER
+      .country--usa
+        .badge USA
+  +section('intro')
+    .heading--main Invention of the Jet Engine
+  +section('timeline')
+    include timeline
+.hotspot
+  icon.fa(class="fa-fighter-jet")

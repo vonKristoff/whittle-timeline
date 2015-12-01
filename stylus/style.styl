@@ -1,7 +1,230 @@
 @import 'nib'
 @import 'mixins'
+@import 'fonts'
 
 global-reset()
 
 *, *:before, *:after
-	box-sizing border-box
+  box-sizing border-box
+
+// ffont('Furore', _furore)
+
+html, body
+  min-height 100%
+  font-size 16px
+  overflow-x hidden
+  // font-family 'Furore'
+
+.layout--flex
+  display flex
+  align-items center
+  justify-content center
+  h3, p
+    flex 1
+
+.heading--main
+  font-size 2em
+  position absolute
+  width 100%
+  left 0
+  top 15vh
+  text-align center
+
+.hotspot
+  position fixed
+  width 50px
+  height 50px
+  border-radius 50%
+  background rgba(0,190,140,.3)
+  left calc(50% - 25px)
+  opacity 0
+  z-index -1
+  &.fixed
+    transform scale3d(1,1,1)
+    opacity 1
+    top calc(50%)
+    transform translateY(calc(-50%))
+  .fa
+    position absolute
+    font-size 2em
+    transform rotate(90deg)
+    height 50px
+    text-align center
+    color rgba(255,255,255,1)
+
+.page-wrapper
+  width 100%
+  max-width 1024px
+  margin 0 auto
+
+h3
+  font-size 1.5em
+
+p
+  margin 1em 0
+  line-height 1.25em
+
+.event-header
+  p
+    font-weight bold
+  p.date
+    position relative
+    margin 0
+    font-size .75em
+    text-align right
+    &:after
+      position absolute
+      content ''
+      width 2em
+      right -2rem
+      height 1px
+      background rgba(0,0,0,0.2)
+      top calc(1rem / 2)
+
+section
+  .content-wrap
+    margin 4em
+
+.timeline-container
+  margin-top 25vh
+  margin-bottom 50vh
+  text-align center  
+  .tl--year
+    span
+      font-size 2em
+  .tl--months
+    .month
+      padding .5em
+      span
+        font-size .75em
+    .month--dash
+      position relative
+      height 1px
+      width 1em
+      background rgba(0,0,0,.2)
+      margin 1em 0
+      margin-left calc(50% - .5em)
+      &:after
+        position absolute
+        content ''
+        width 1px
+        top -1rem
+        height 1rem
+        background rgba(0,0,0,0.2)
+
+.badge
+  padding .5em
+  border-radius 7px
+  border 1px solid rgba(0,0,0,.2)
+  margin-right 1em
+
+.event
+  position relative
+  display flex
+  flex-wrap wrap
+  align-items flex-start
+  justify-content center
+  text-align left
+  transition all .5s
+  opacity 0.5
+  // transform scale3d(2,2,2)
+  &.focus
+    transform scale3d(1,1,1)
+    opacity: 1
+  &.GB
+    .badge
+      background rgba(90,250,180,.2)
+  &.GER
+    .badge
+      background rgba(200,200,10,.2)
+  &.USA
+    .badge
+      background rgba(0,120,250,.2)
+  &.reveal
+    reveal()
+  &.view--image
+    .flex-content-info
+      flex 0.0001
+      padding 0
+      opacity 0
+      height 0
+      overflow hidden
+    .flex-content-image
+      padding-left 1em  
+  .flex-content-info
+    opacity 1
+    height auto
+    transition all .5s
+    padding 1em
+    padding-right 2em
+    flex 1
+    @media (max-width: 640px)
+      padding-right 1em
+  .flex-content-image
+    opacity 1
+    transition all .5s
+    padding 1em
+    padding-left 2em
+    flex 1
+    @media (max-width: 640px)
+      flex-basis 100%
+      padding-left 1em
+    img
+      width 100%
+    .figure
+      position absolute
+      width 50%
+      height 100%
+      background-size contain
+      background-repeat no-repeat
+      background-position center center
+  &:after
+    position absolute
+    content: ''
+    height 100%
+    width 1px
+    background rgba(0,0,0,.2)
+    left 50%
+    @media (max-width: 640px)
+      visibility hidden
+
+.header
+  position fixed
+  top 0
+  width 100%
+  left 0
+  background white
+  z-index 100  
+  display flex
+  align-items center
+  justify-content center
+  padding .5em 4em
+  .title
+    flex 1
+    text-align left
+  .current--date
+    text-align center
+    flex 1
+    span
+      font-size 2em
+  .country-nav
+    @media (max-width: 640px)
+      visibility hidden
+    flex 1
+    height 3em
+    display flex
+    align-items center
+    justify-content flex-end
+    [class^="country--"]
+      &:hover
+        cursor pointer
+    .country--gb
+      .badge
+        background rgba(90,250,180,.2)
+    .country--ger
+      .badge
+        background rgba(200,200,10,.2)
+    .country--usa
+      .badge
+        background rgba(0,120,250,.2)
+        margin-right 0

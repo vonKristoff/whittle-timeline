@@ -1,0 +1,31 @@
+ul.timeline-container
+  each item, i in data
+    li.tl--year(data-year=item.year)
+      span= item.year
+      ul.tl--months
+        each val in ["january", "february", "march", "april", "may", "june", "july", "august", "september", "october", "november", "december"]
+          if(data[i].events[val] != null)
+            li.month
+              span= val
+            each evt in data[i].events[val]
+              li.event.reveal.all(class=evt.origin)
+                .flex-content-info
+                  .event-header
+                    .layout--flex
+                      .badge= evt.origin
+                      h3= evt.title
+                      p.date= evt.day
+                    p= evt.header
+                  .event-body
+                    each para in evt.paragraphs
+                      p= para
+                  .event-footer
+                    p= evt.footnote
+                .flex-content-image
+                  if(evt.image != null)
+                    img(src=evt.image)
+                    //- .figure(data-src=evt.image)
+                    .caption= evt.caption
+          else
+            li.month--dash
+

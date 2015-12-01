@@ -1,3 +1,8 @@
+mixin section(name)
+  section.div(class=name)
+    .content-wrap
+      block
+
 mixin checkbox(id, name, label)
   input(type="checkbox" id=id name=name)
   label(for=id)
@@ -6,3 +11,4 @@ mixin checkbox(id, name, label)
 mixin horizon(title, classname)
   fieldset(class=classname)
     legend= title
+

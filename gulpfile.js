@@ -9,7 +9,9 @@ var gulp        = require('gulp')
 
 // utils
 ,   termstyle   = require('jshint-stylish')
-,   jshint      = require('gulp-jshint');
+,   jshint      = require('gulp-jshint')
+
+,   data        = require('./data');
 
 
 // I/O Script Paths
@@ -35,7 +37,7 @@ gulp.task('stylus', function(){
 // HTML
 gulp.task('jade',function() {
   gulp.src(paths.jade)
-    .pipe(jade({pretty: true}))
+    .pipe(jade({pretty: true, locals: data}))
     .pipe(gulp.dest('../'))
     .pipe(refresh())
 })
